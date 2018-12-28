@@ -4,7 +4,7 @@ var router = express.Router()
 var workout = require('./api/workout.route')
 
 
-router.use('/todos', workouts);
+router.use('/workouts', workouts);
 
 
 module.exports = router;
