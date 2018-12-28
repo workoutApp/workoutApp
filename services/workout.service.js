@@ -1,8 +1,8 @@
 // Access our newly created Mongoose Model
-var ToDo = require('../models/workout.model.js')
+var Workout = require('../models/workout.model.js')
 
 // Let's use an Async function to get the To Do List
-exports.getTodos = async function(query, page, limit){
+exports.getWorkouts = async function(query, page, limit){
 
     // We also want to set up options for the mongoose paginate
 
@@ -14,11 +14,11 @@ exports.getTodos = async function(query, page, limit){
     //Let's create a Try and Catch function that way we have some error handling set. Waiting for the promise
         
     try {
-        var todos = await ToDo.paginate(query, options)
+        var workouts = await Workout.paginate(query, options)
         
         //Once the Mongoose promise is returned we're going to go ahead and return the To Do List it has produced 
 
-        return todos;
+        return workouts;
 
     } catch (e) {
 
@@ -28,83 +28,83 @@ exports.getTodos = async function(query, page, limit){
     }
 }
 
-exports.createTodo = async function(todo){
+exports.createWorkout = async function(workout){
     
     // Creating a new Mongoose Object by using the new keyword
 
-    var newTodo = new ToDo({
-        calendarDate: todo.calendarDate,
-        userName: todo.userName,
-        workoutName: todo.userName,
-        description: todo.description,
-        workoutType: todo.workoutType,
-        complete: todo.complete
+    var newWorkout = new Workout({
+        calendarDate: workout.calendarDate,
+        userName: workout.userName,
+        workoutName: workout.userName,
+        description: workout.description,
+        workoutType: workout.workoutType,
+        complete: workout.complete
     })
 
     try{
 
-        // Let's go ahead and save the Todo 
+        // Let's go ahead and save the Workout 
 
-        var savedTodo = await newTodo.save()
+        var savedWorkout = await newWorkout.save()
 
-        return savedTodo;
+        return savedWorkout;
     }catch(e){
       
-        //if we can't create a Todo we want to throw an error 
+        //if we can't create a Workout we want to throw an error 
 
-        throw Error("Error while Creating Todo")
+        throw Error("Error while Creating Workout")
     }
 }
 
-exports.updateTodo = async function(todo){
-    var id = todo.id
+exports.updateWorkout = async function(workout){
+    var id = workout.id
 
     try{
-        //Find the old Todo Object by the Id
+        //Find the old Workout Object by the Id
     
-        var oldTodo = await ToDo.findById(id);
+        var oldWorkout = await Workout.findById(id);
     }catch(e){
-        throw Error("Error occured while Finding the Todo")
+        throw Error("Error occured while Finding the Workout")
     }
 
-    // If no old Todo Object exists return false
+    // If no old Workout Object exists return false
 
-    if(!oldTodo){
+    if(!oldWorkout){
         return false;
     }
 
-    console.log(oldTodo)
+    console.log(oldWorkout)
 
-    //Edit the Todo Object
+    //Edit the Workout Object
 
-    oldTodo.calendarDate = oldTodo.calendarDate;
-    oldTodo.userName = oldTodo.userName;
-    oldTodo.workoutName = oldTodo.userName;
-    oldTodo.description = oldTodo.description;
-    oldTodo.workoutType = oldTodo.workoutType;
-    oldTodo.complete = oldTodo.complete;
+    oldWorkout.calendarDate = oldWorkout.calendarDate;
+    oldWorkout.userName = oldWorkout.userName;
+    oldWorkout.workoutName = oldWorkout.userName;
+    oldWorkout.description = oldWorkout.description;
+    oldWorkout.workoutType = oldWorkout.workoutType;
+    oldWorkout.complete = oldWorkout.complete;
 
-    console.log(oldTodo)
+    console.log(oldWorkout)
 
     try{
-        var savedTodo = await oldTodo.save()
-        return savedTodo;
+        var savedWorkout = await oldWorkout.save()
+        return savedWorkout;
     }catch(e){
-        throw Error("And Error occured while updating the Todo");
+        throw Error("And Error occured while updating the Workout");
     }
 }
 
-exports.deleteTodo = async function(id){
+exports.deleteWorkout = async function(id){
     
-    // Delete the Todo
+    // Delete the Workout
 
     try{
-        var deleted = await ToDo.deleteOne({_id: id})
+        var deleted = await Workout.deleteOne({_id: id})
         if(deleted.n === 0){
-            throw Error("Todo Could not be deleted")
+            throw Error("Workout Could not be deleted")
         }
         return deleted
     }catch(e){
-        throw Error("Error Occured while Deleting the Todo")
+        throw Error("Error Occured while Deleting the Workout")
     }
 }
