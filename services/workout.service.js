@@ -79,7 +79,7 @@ exports.updateWorkout = async function(workout){
 
     oldWorkout.calendarDate = oldWorkout.calendarDate;
     oldWorkout.userName = oldWorkout.userName;
-    oldWorkout.workoutName = oldWorkout.userName;
+    oldWorkout.exerciseName = oldWorkout.exerciseName;
     oldWorkout.description = oldWorkout.description;
     oldWorkout.workoutType = oldWorkout.workoutType;
     oldWorkout.complete = oldWorkout.complete;
