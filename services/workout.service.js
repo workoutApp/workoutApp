@@ -35,7 +35,7 @@ exports.createWorkout = async function(workout){
     var newWorkout = new Workout({
         calendarDate: workout.calendarDate,
         userName: workout.userName,
-        workoutName: workout.userName,
+        exerciseName: workout.exerciseName,
         description: workout.description,
         workoutType: workout.workoutType,
         complete: workout.complete
