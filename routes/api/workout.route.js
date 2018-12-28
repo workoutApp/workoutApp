@@ -1,19 +1,22 @@
 var express = require('express')
-
 var router = express.Router()
 
+
+
+
+
 // Getting the Todo Controller that we just created
-var WorkoutController = require('../../controllers/todo.controller.js');
+var WorkoutController = require('../../controllers/workout.controller.js');
 
 
 // Map each API to the Controller FUnctions
-router.get('/', WorkoutController.getTodos)
+router.get('/', WorkoutDoController.getWorkouts)
 
-router.post('/', WorkoutController.createTodo)
+router.post('/', WorkoutController.createWorkout)
 
-router.put('/', WorkoutController.updateTodo)
+router.put('/', WorkoutController.updateWorkout)
 
-router.delete('/:id',WorkoutController.removeTodo)
+router.delete('/:id',WorkoutController.removeWorkout)
 
 
 // Export the Router
