@@ -33,7 +33,7 @@ exports.createWorkout = async function(workout){
     // Creating a new Mongoose Object by using the new keyword
 
     var newWorkout = new Workout({
-        calendarDate: workout.calendarDate,
+        calendarDate: new Date(workout.calendarDate),
         userName: workout.userName,
         exerciseName: workout.exerciseName,
         description: workout.description,
