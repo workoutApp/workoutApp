@@ -33,15 +33,12 @@ exports.createTodo = async function(todo){
     // Creating a new Mongoose Object by using the new keyword
 
     var newTodo = new ToDo({
-        date: new Date(),
-        exercises: [
-            {
-                name: todo.name,
-                description: todo.description,
-                bodyPart: todo.bodyPart,
-                accomplished: todo.accomplished
-            }
-        ]
+        calendarDate: todo.calendarDate,
+        userName: todo.userName,
+        workoutName: todo.userName,
+        description: todo.description,
+        workoutType: todo.workoutType,
+        complete: todo.complete
     })
 
     try{
@@ -80,19 +77,12 @@ exports.updateTodo = async function(todo){
 
     //Edit the Todo Object
 
-    oldTodo.date = new Date();
-    oldTodo.exercises = [
-            {
-                oldTodo.name = todo.name,
-                oldTodo.description = todo.description,
-                oldTodo.bodyPart = todo.bodyPart,
-                oldTodo.accomplished = todo.accomplished
-            }
-        ]
-    oldTodo.title = todo.title
-    oldTodo.description = todo.description
-    oldTodo.status = todo.status
-
+    oldTodo.calendarDate = oldTodo.calendarDate;
+    oldTodo.userName = oldTodo.userName;
+    oldTodo.workoutName = oldTodo.userName;
+    oldTodo.description = oldTodo.description;
+    oldTodo.workoutType = oldTodo.workoutType;
+    oldTodo.complete = oldTodo.complete;
 
     console.log(oldTodo)
 
