@@ -29,7 +29,7 @@ exports.createWorkout = async function (req, res, next) {
 
     // Req.Body has form submit values.
     var workout = {
-        calenderDate: req.body.calenderDate,
+        calendarDate: req.body.calendarDate,
         userName: req.body.userName,
         exerciseName: req.body.exerciseName,
         workoutType: req.body.workoutType,
@@ -64,7 +64,7 @@ exports.updateWorkout = async function(req, res, next){
 
     var workout = {
         id,
-        calenderDate: req.body.calendertDate ? req.body.calenderDate : null,
+        calendarDate: req.body.calendarDate ? req.body.calendarDate : null,
         userName: req.body.userName ? req.body.userName : null,
         exerciseName: req.body.exerciseName ? req.body.exerciseName : null,
         workoutType: req.body.workoutType ? req.body.workoutType : null,
