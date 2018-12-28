@@ -77,12 +77,12 @@ exports.updateWorkout = async function(workout){
 
     //Edit the Workout Object
 
-    oldWorkout.calendarDate = oldWorkout.calendarDate;
-    oldWorkout.userName = oldWorkout.userName;
-    oldWorkout.exerciseName = oldWorkout.exerciseName;
-    oldWorkout.description = oldWorkout.description;
-    oldWorkout.workoutType = oldWorkout.workoutType;
-    oldWorkout.complete = oldWorkout.complete;
+    oldWorkout.calendarDate = Workout.calendarDate;
+    oldWorkout.userName = Workout.userName;
+    oldWorkout.exerciseName = Workout.exerciseName;
+    oldWorkout.description = Workout.description;
+    oldWorkout.workoutType = Workout.workoutType;
+    oldWorkout.complete = Workout.complete;
 
     console.log(oldWorkout)
 
