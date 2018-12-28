@@ -3,7 +3,7 @@ var mongoosePaginate = require('mongoose-paginate')
 
 
 var workoutSchema = new mongoose.Schema({
-    calendertDate: Date,
+    calenderDate: Date,
     userName: String,
     exerciseName: String,
     workoutType: String,

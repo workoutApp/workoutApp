@@ -29,15 +29,20 @@ exports.createWorkout = async function (req, res, next) {
 
     // Req.Body has form submit values.
     var workout = {
-        title: req.body.title,
+        calenderDate: req.body.calenderDate,
+        userName: req.body.userName,
+        exerciseName: req.body.exerciseName,
+        workoutType: req.body.workoutType,
         description: req.body.description,
-        status: req.body.status
+        complete: req.body.complete
+        // status: req.body.status
+
     }
 
     try {
 
         // calls Service function w/new object from req b
-        var createdWorkout = await TodoService.createWorkout(workout)
+        var createdWorkout = await WorkoutService.createWorkout(workout)
         return res.status(201).json({ status: 201, data: createdWorkout, message: "Succesfully Created WorkOut" })
     } catch (e) {
 
@@ -59,10 +64,16 @@ exports.updateWorkout = async function(req, res, next){
 
     var workout = {
         id,
-        title: req.body.title ? req.body.title : null,
+        calenderDate: req.body.calendertDate ? req.body.calenderDate : null,
+        userName: req.body.userName ? req.body.userName : null,
+        exerciseName: req.body.exerciseName ? req.body.exerciseName : null,
+        workoutType: req.body.workoutType ? req.body.workoutType : null,
         description: req.body.description ? req.body.description : null,
-        status: req.body.status ? req.body.status : null
+        complete: req.body.complete ? req.body.complete : null,
+        // status: req.body.status ? req.body.status : null,
+
     }
+
 
     try{
         var updatedWorkout = await WorkoutService.updateWorkout(workout)
@@ -84,8 +95,5 @@ exports.removeWorkout = async function(req, res, next){
     }
 
 }
-
-
-
 
 
