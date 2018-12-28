@@ -10,7 +10,7 @@ var WorkoutController = require('../../controllers/workout.controller.js');
 
 
 // Map each API to the Controller FUnctions
-router.get('/', WorkoutDoController.getWorkouts)
+router.get('/', WorkoutController.getWorkouts)
 
 router.post('/', WorkoutController.createWorkout)
 
