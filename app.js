@@ -23,6 +23,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// This must be above the routes
+//CORS config so that the angular app can talk to this api without errors on permission
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
+
 app.use('/', index);
 app.use('/users', users);
 
@@ -39,14 +48,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/workoutapp', { useNewUrlParser: true
     { console.log
       (`Error Connecting to the Mongodb Database at URL :mongodb://127.0.0.1:27017/workoutapp`)
     })
-
-//CORS config so that the angular app can talk to this api without errors on permission
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  next();
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
