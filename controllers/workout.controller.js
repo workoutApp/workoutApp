@@ -9,10 +9,13 @@ exports.getWorkouts = async function (req, res, next) {
     // ternary to check query parameters
     var page = req.query.page ? req.query.page : 1
     var limit = req.query.limit ? req.query.limit : 10;
+    if (req.query.calendarDate) {
+        req.query.calendarDate = new Date(req.query.calendarDate);
+    }
 
     try {
 
-        var workouts = await WorkoutService.getWorkouts({}, page, limit)
+        var workouts = await WorkoutService.getWorkouts(req.query, page, limit)
 
         // return workout list w/HTTP Status Code and Message.
         return res.status(200).json({ status: 200, data: workouts, message: "Succesfully Workouts Recieved" });
