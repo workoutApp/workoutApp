@@ -63,8 +63,6 @@ exports.updateWorkout = async function(req, res, next){
 
     var id = req.body._id;
 
-    console.log(req.body)
-
     var workout = {
         id,
         calendarDate: req.body.calendarDate ? req.body.calendarDate : null,
@@ -73,8 +71,6 @@ exports.updateWorkout = async function(req, res, next){
         workoutType: req.body.workoutType ? req.body.workoutType : null,
         description: req.body.description ? req.body.description : null,
         complete: req.body.complete ? req.body.complete : null,
-        // status: req.body.status ? req.body.status : null,
-
     }
 
 
